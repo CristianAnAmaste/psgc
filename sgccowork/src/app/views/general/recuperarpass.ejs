@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SGC</title>
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+     <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js" ></script>
+     <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <h2 class="navbar-brand" >SGC</h2>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="/inicio"> Inicio</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+   
+    <div class="col-md-12">
+        <div class="card">
+          <form class="form-horizontal" action="/recuperarpass" method="post" name="formularioderegistro">
+          <div class="card-body">
+           <h4 class="card-title text-center">Recuperar Contraseña</h4>
+           <div class="form-group row">
+            <label for="fname" class="col-sm-3 text-left control-label col-form-label">Correo electronico</label>
+            <div class="col-sm-9"><input type="text" name="correo_electronico" class="form-control" id="fname" placeholder="Correo electronico"></div>
+            </div>
+            <div class="form-group row">
+            <input type="submit" name="recuperar" class="btn btn-primary">
+            </div>
+            </div>
+
+            </form>
+
+          </div>
+        </div>
+      
+  
+  <!-- Script -->
+  </body>
+</html>

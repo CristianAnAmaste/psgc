@@ -1,0 +1,12 @@
+.sliderow{
+			position: fixed;
+			margin: 0%;
+			padding: 0%; 
+			filter: blur(8px);
+		}
+		.vistarow{
+			margin: 0%;
+			padding: 0%;
+
+			
+		}

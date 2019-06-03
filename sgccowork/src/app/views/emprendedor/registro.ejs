@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registro</title>
+     <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+     <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js" ></script>
+     <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+     
+  <link rel="stylesheet" type="text/css" href="/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/quill/dist/quill.snow.css">
+  
+
+
+  </head>
+  <body>
+  <script src="/js/socketio.js"></script>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">SGC</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/inicio"> Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login"> Login</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/registro"> Registro</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<div class="d-flex justify-content-center">
+<% if ( message.length > 0) { %>
+                <div class="w- p-3 alert-danger"><%= message %></div>
+      <% } %>
+</div>
+<div class="d-flex justify-content-center">
+
+
+  
+  <div class="col col-md-5">
+  <div class="col-md-12">
+                        <div class="card">
+
+    <form class="form-horizontal" action="/registro" method="post" name="formularioderegistro">
+    <div class="card-body">
+     <h4 class="card-title text-center">Personal Info</h4>
+     <div class="form-group row">
+      <label for="fname" class="col-sm-3 text-left control-label col-form-label">Nombres</label>
+      <div class="col-sm-9"><input type="text" name="nombres" value="<%= nombres %>" class="form-control" id="fname" placeholder="Nombres"></div>
+      </div>
+
+      <div class="form-group row">
+      <label for="fname" class="col-sm-3 text-left control-label col-form-label">Apellido paterno</label>
+      <div class="col-sm-9"><input type="text" name="apellido_pap" value="<%= apellido_pap %>" class="form-control" id="fname" placeholder="Apellido paterno"></div>
+      </div>
+
+      <div class="form-group row">
+      <label for="fname" class="col-sm-3 text-left control-label col-form-label">Apellido materno</label>
+      <div class="col-sm-9"><input type="text" name="apellido_mam" value="<%= apellido_mam %>" class="form-control" id="fname" placeholder="Apellido materno"></div>
+      </div>
+
+      <div class="form-group row">
+      <label for="fname" class="col-sm-3 text-left control-label col-form-label">Rut</label>
+      <div class="col-sm-9"><input type="number" name="rut" value="<%= rut %>" class="form-control" id="fname" placeholder="Rut"></div>
+      </div>
+      <div class="form-group row">
+      <label for="fname" class="col-sm-3 text-left control-label col-form-label">Correo electrónico</label>
+      <div class="col-sm-9"><input type="text" name="correo_electronico" value="<%= correo_electronico %>" class="form-control" id="fname" placeholder="Correo electrónico"></div>
+      </div>
+      <div class="form-group row">
+      <label for="fname" class="col-sm-3 text-left control-label col-form-label">Teléfono</label>
+      <div class="col-sm-9"><input type="text" name="telefono" value="<%= telefono %>" class="form-control" id="fname" placeholder="N° de Teléfono"></div>
+      </div>
+      <% if(genero == true){ %>
+      <div class="form-group row">
+            <label class="col-md-3 text-left control-label col-form-label">Genero</label>
+           <div class="col-md-9">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" name="masculino" class="custom-control-input" id="customControlAutosizing1">
+                  <label class="custom-control-label" for="customControlAutosizing1">Masculino</label>
+              </div>
+             <div class="custom-control custom-checkbox mr-sm-2">
+                 <input type="checkbox" name="femenino" class="custom-control-input" id="customControlAutosizing2">
+                 <label class="custom-control-label" for="customControlAutosizing2">Femenino</label>
+             </div>
+            <div class="custom-control custom-checkbox mr-sm-2">
+            <input type="checkbox" name="otro" class="custom-control-input" id="customControlAutosizing3">
+             <label class="custom-control-label" for="customControlAutosizing3">Otro</label>
+             </div>
+             </div>
+          </div>
+     
+      <%  } else { 
+      if(genero == 'masculino') {%>
+        <div class="form-group row">
+            <label class="col-md-3 text-left control-label col-form-label">Genero</label>
+           <div class="col-md-9">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" name="masculino" class="custom-control-input" id="customControlAutosizing1" checked>
+                  <label class="custom-control-label" for="customControlAutosizing1">Masculino</label>
+              </div>
+             <div class="custom-control custom-checkbox mr-sm-2">
+                 <input type="checkbox" name="femenino" class="custom-control-input" id="customControlAutosizing2">
+                 <label class="custom-control-label" for="customControlAutosizing2">Femenino</label>
+             </div>
+            <div class="custom-control custom-checkbox mr-sm-2">
+            <input type="checkbox" name="otro" class="custom-control-input" id="customControlAutosizing3">
+             <label class="custom-control-label" for="customControlAutosizing3">Otro</label>
+             </div>
+             </div>
+          </div>
+      <%}else{
+          if(genero == 'femenino'){ %>
+          <div class="form-group row">
+            <label class="col-md-3 text-left control-label col-form-label">Genero</label>
+           <div class="col-md-9">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" name="masculino" class="custom-control-input" id="customControlAutosizing1">
+                  <label class="custom-control-label" for="customControlAutosizing1">Masculino</label>
+              </div>
+             <div class="custom-control custom-checkbox mr-sm-2">
+                 <input type="checkbox" name="femenino" class="custom-control-input" id="customControlAutosizing2" checked>
+                 <label class="custom-control-label" for="customControlAutosizing2">Femenino</label>
+             </div>
+            <div class="custom-control custom-checkbox mr-sm-2">
+            <input type="checkbox" name="otro" class="custom-control-input" id="customControlAutosizing3">
+             <label class="custom-control-label" for="customControlAutosizing3">Otro</label>
+             </div>
+             </div>
+          </div>
+        <%  }else{ %>
+        <div class="form-group row">
+            <label class="col-md-3 text-left control-label col-form-label">Genero</label>
+           <div class="col-md-9">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" name="masculino" class="custom-control-input" id="customControlAutosizing1">
+                  <label class="custom-control-label" for="customControlAutosizing1">Masculino</label>
+              </div>
+             <div class="custom-control custom-checkbox mr-sm-2">
+                 <input type="checkbox" name="femenino" class="custom-control-input" id="customControlAutosizing2">
+                 <label class="custom-control-label" for="customControlAutosizing2">Femenino</label>
+             </div>
+            <div class="custom-control custom-checkbox mr-sm-2">
+            <input type="checkbox" name="otro" class="custom-control-input" id="customControlAutosizing3" checked>
+             <label class="custom-control-label" for="customControlAutosizing3">Otro</label>
+             </div>
+             </div>
+          </div>
+         <% }}} %>
+
+         <div class="form-group row">
+    <label class="col-md-3 text-left control-label col-form-label">Nacionalidad</label>
+    <div class="col-md-9">
+        <select name="pais" class="select2 form-control custom-select" style="width: 100%; height:36px;">
+            <option value="0">--</option>
+            <optgroup label="Ciudades del mundo">
+                   <% if (!(typeof pais == "undefined" || pais.length == 0)) {
+          for (var i = 0; i < pais.length; i ++) { 
+          if(pais[i].id_pais == paisc){%>
+          <option value ="<%= pais[i].id_pais %>" selected><%= pais[i].nombre_pais %></option>
+          <% }else{%>
+          <option value ="<%= pais[i].id_pais %>" ><%= pais[i].nombre_pais %></option>
+         <% }}}%>
+            </optgroup>
+        </select>
+    </div>
+</div>
+
+
+      <div> Dirección
+      <div>Region:
+      <select name="region">
+        <option value="0">--</option>
+          <% if (!(typeof region == "undefined" || region.length == 0)) {
+          for (var i = 0; i < region.length; i ++) { 
+          if(region[i].region_id == regionc){%>
+          <option value ="<%= region[i].region_id %>"><%= region[i].region_nombre %></option>
+          <% }else{ %>
+          <option value ="<%= region[i].region_id %>"><%= region[i].region_nombre %></option>
+          <% }}} %>
+      </select>
+      </div>
+     
+      <div id= "prv" style="display: none;"> Provincia:<!-- va provincias -->
+        <select name="provincia" onchange=""></select>
+      </div>
+      
+      <div id= "cmn" style="display: none;"> Comuna:<!-- va comuna -->
+        <select name="comuna" onchange=""></select>
+      </div>
+      
+      <div>calle:<input type="text" name="calle" value="<%= calle %>"></div>
+      
+      <div>n°:<input type="text" name="numero_calle" value="<%= numero_calle %>"></div>
+      
+      </div>
+      <% if(nivel == true){ %>
+      <div>¿has emprendido?. Si:<input type="checkbox" name="nivel"></div>
+      <%}else{ %>
+      <div>¿has emprendido?. Si:<input type="checkbox" name="nivel" checked></div>
+      <%}%>
+      <div>ocupacion: 
+        <select name="ocupacion">
+        <option value="0">--</option>
+          <% if (!(typeof ocupacion == "undefined" || ocupacion.length == 0)) {
+          for (var i = 0; i < ocupacion.length; i ++) { 
+          if (ocupacion[i].id_ocupacion == ocupacionc ){
+            if (ocupacionc == '86' ){ %>
+          <option value ="<%= ocupacion[i].id_ocupacion %>"><%= ocupacion[i].ocupacion %></option>
+          <% } else { %>
+          <option value ="<%= ocupacion[i].id_ocupacion %>" selected><%= ocupacion[i].ocupacion %></option>
+          <% } } else { %>
+
+          <option value ="<%= ocupacion[i].id_ocupacion %>"><%= ocupacion[i].ocupacion %></option>
+          <% }}} %>
+      </select>
+      </div>
+      <div id= "inst" style="display: none;"> institucion:<!-- va provincias -->
+        <select name="institucion" onchange=""></select>
+      </div>
+
+       
+      <div><input type="submit" name="registro" class="btn btn-primary"></div>
+      </div>
+    </form>
+    </div>
+    </div>
+  </div> <!--row -->
+  </div>
+  <!-- Script -->
+   <script src="/js/socket.io.js"></script>
+    <script src="/js/verificarregistro.js"></script>
+    <script src="/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="/assets/libs/select2/dist/js/select2.min.js"></script>
+<script src="/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+      $(".select2").select2();
+
+        /*colorpicker*/
+        $('.demo').each(function() {
+        //
+        // Dear reader, it's actually very easy to initialize MiniColors. For example:
+        //
+        //  $(selector).minicolors();
+        //
+        // The way I've done it below is just for the demo, so don't get confused
+        // by it. Also, data- attributes aren't supported at this time...they're
+        // only used for this demo.
+        //
+        $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function(value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+
+    </script>
+  </body>
+</html>

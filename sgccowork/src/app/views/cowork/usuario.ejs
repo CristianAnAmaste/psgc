@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>administrador</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+  <div class="col-md-6 mt-4 text-center">
+    <p> se supone que inicia sesion como administrador cowork </p>
+    <a href="/inicio"> Inicio</a>
+    <a href="/usuario"> Lista de Usuarios</a>
+    <a href="/logout"> Cerrar sesion</a>
+  </div>
+  <div>
+  <table >
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th> 
+    <th>Nacionalidad</th>
+  </tr>
+  <% if (!(typeof user == "undefined" || user.length == 0)) { 
+  for(var i = 0 ; i < user.length ; i++){
+  %>
+  <tr>
+    <th><%= user[i].nombres %></th>
+    <th><%= user[i].apellido_pap %></th> 
+    <th><%= user[i].id_nacionalidad %></th>
+  </tr>
+  
+  <% }
+  }else{ %>
+  <tr>
+    <th>No hay</th>
+    <th>usuarios</th> 
+    <th>registrados</th>
+  </tr>
+  <% } %>
+</table>
+  </div>
+  </body>
+</html>
